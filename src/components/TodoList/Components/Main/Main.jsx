@@ -32,19 +32,45 @@ function Main({ todoList, setTodoList }) {
     setInputValue("");
   };
 
+  const checkBoxOnChangeHandler = (e) => {
+    const todoId = parseInt(e.target.value);
+
+    setTodoList((prev) =>
+      prev.map((todo) => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            isComplete: !todo.isComplete,
+          };
+        }
+        return todo;
+      })
+    );
+  };
+
+  const deleteClickHandler = (todoId) => {
+    setTodoList((prev) => prev.filter((todo) => todo.id !== todoId));
+  };
   return (
     <div css={s.container}>
       <div css={s.listContainer}>
         <ul>
           {todoList.map((todo) => (
             <li key={todo.id}>
-              <input type="checkbox" id={`todo${todo.id}`} />
+              <input
+                type="checkbox"
+                id={`todo${todo.id}`}
+                value={todo.id}
+                checked={todo.isComplete}
+                onChange={checkBoxOnChangeHandler}
+              />
               <label htmlFor={`todo${todo.id}`}></label>
-              <label htmlFor={`todo${todo.id}`}>
-                {todo.content}
-              </label>
+              <label htmlFor={`todo${todo.id}`}>{todo.content}</label>
               <div css={s.hiddenTrashBox}>
-                <div css={s.trashBox}>
+                <div
+                  css={s.trashBox}
+                  onClick={() => deleteClickHandler(todo.id)}
+                >
                   <IoTrash />
                 </div>
               </div>
