@@ -1,4 +1,5 @@
 // import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 import BasicJsx from "./components/BasicJsx/BasicJsx";
 import BasicProps from "./components/BasicProps/BasicProps";
 import Calculator from "./components/BasicState/Calculator/Calculator";
@@ -21,10 +22,14 @@ import UserProfile from "./components/Practice/UserProfile/UserProfile";
 import Header from "./components/TodoList/Components/Header/Header";
 import Layout from "./components/TodoList/Components/Layout/Layout";
 import Index from "./components/TodoList/Pages";
+import Router1 from "./RouterStudy/Router1/Router1";
+import Router2 from "./RouterStudy/Router2/Router2";
+import Router3 from "./RouterStudy/Router3/Router3";
+import Router4 from "./RouterStudy/Router4/Router4";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       {/* {<BasicReact />} */}
       {/* <BasicJsx /> */}
       {/* <BasicProps /> */}
@@ -44,10 +49,18 @@ function App() {
       {/* <SignupForm /> */}
       {/* <Emotion1 /> */}
       {/* <Emotion2 /> */}
-      <Index />
+      {/* <Index /> */}
       {/* <Header /> */}
       {/* <Layout /> */}
-    </>
+      {/* <Router1 /> */}
+      {/* <Router2 /> */}
+      {/* <Router3 /> */}
+      <Router4 />
+    </BrowserRouter>
+    /**
+     * BrowserRouter로 감싸진 내부에 있는 컴포넌트들만 Routes, Route, Link, useNavigation 같은
+     * 라우터 기능을 사용할 수 있다..
+     */
   );
 }
 
